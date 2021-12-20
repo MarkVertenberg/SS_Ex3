@@ -165,8 +165,62 @@ void AtbashSequences(char word[WORD], char text[TXT]){
 
 }
 
+void copyWord(char from[WORD], char to[WORD]){
+    int j = 0;
+    for(int i = 0; from[i] != '\0'; i++){
+        to[i] = from[i];
+        j++;
+    }
+    to[j] = '\0';
+}
+
+int isContains(char arr[WORD], char c){
+    for(int i = 0; arr[i] != '\0'; i++){
+        if(arr[i] == c)return i;
+    }
+    return -1;
+}
+
+int isEmpty(char arr[WORD]){
+    for(int i = 0; arr[i] != '\0'; i++){
+        if(arr[i] != -1)return FALSE;
+    }
+    return TRUE;
+}
+
 void AnagramSequences(char word[WORD], char text[TXT]){
     printf("Anagram Sequences: ");
+    char copy[WORD];
+    int firstPrint = TRUE;
+    for(int i = 0; text[i] != '\0'; i++){
+        if(text[i] != ' '){
+            int keep = TRUE;
+            copyWord(word, copy);
+            for(int j = i; keep && text[j] != '\0' ; j++){
+                if(text[j] != ' '){
+                    int k = isContains(copy, text[j]);
+                    if(k != -1){
+                        copy[k] = -1;
+                    }
+                    else{
+                        keep = FALSE;
+                    }
+                }
+                if(isEmpty(copy)){
+                    if(!firstPrint){
+                        printf("~");
+                    }
+                    else{
+                        firstPrint = FALSE;
+                    }
+                    for(int g = i; g <= j; g++){
+                        printf("%c", text[g]);
+                    }
+                    keep = FALSE;
+                }
+            }
+        }
+    }
     printf("\n");
 }
 
