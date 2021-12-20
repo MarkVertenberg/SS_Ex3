@@ -221,7 +221,6 @@ void AnagramSequences(char word[WORD], char text[TXT]){
             }
         }
     }
-    printf("\n");
 }
 
 int main(){
