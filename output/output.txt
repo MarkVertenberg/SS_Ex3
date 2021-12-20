@@ -1,0 +1,3 @@
+Gematria Sequences: a-bc,d~dbca~dcba
+Atbash Sequences: wxyz~zyxw
+Anagram Sequences: dbca~dcba
